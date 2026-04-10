@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Juan Pablo Lozada · CV Frontend</title>
+    <!-- Fuentes sobrias y modernas: inter + sistema -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome (iconos minimalistas) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;   /* fondo neutro suave */
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.45;
+            color: #1a2c3e;
+            padding: 2rem 1.5rem;
+        }
+
+        /* contenedor principal estilo carta / papel */
+        .resume {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* cabecera sobria con separación elegante */
+        .header {
+            padding: 2rem 2.2rem 1.2rem 2.2rem;
+            border-bottom: 1px solid #e9edf2;
+            background: #ffffff;
+        }
+
+        .name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f2b3d;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .badge-role {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: #eef3fc;
+            color: #1a6d8f;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            row-gap: 0.6rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #2c4b66;
+            border-top: 1px solid #eff3f8;
+            padding-top: 1.2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 450;
+        }
+
+        .contact-item i {
+            width: 1.25rem;
+            color: #3f7e9c;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: #2c4b66;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s;
+        }
+
+        .contact-item a:hover {
+            border-bottom: 1px dotted #3f7e9c;
+            color: #0e3b52;
+        }
+
+        /* contenido principal */
+        .content {
+            padding: 1.8rem 2.2rem 2.5rem 2.2rem;
+        }
+
+        /* secciones */
+        .section {
+            margin-bottom: 1.8rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            color: #1f4e6e;
+            border-left: 4px solid #3f8db0;
+            padding-left: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title i {
+            font-size: 1.1rem;
+            color: #3f7e9c;
+            width: 1.4rem;
+        }
+
+        /* perfil profesional (texto) */
+        .profile-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #2e4053;
+            background: #fafcfd;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            border: 1px solid #eef2f6;
+        }
+
+        /* skills en chips elegantes */
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.2rem;
+        }
+
+        .skill-chip {
+            background: #f0f4f9;
+            color: #1e4a6b;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            letter-spacing: -0.2px;
+            border: 1px solid #e2e9f0;
+        }
+
+        .skill-chip strong {
+            font-weight: 600;
+            color: #0f4c6b;
+        }
+
+        .skill-category {
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4f6f8a;
+            margin-bottom: 0.6rem;
+        }
+
+        /* experiencia laboral */
+        .experience-item {
+            margin-bottom: 1.4rem;
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.35rem;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1c3b50;
+        }
+
+        .exp-company {
+            font-weight: 500;
+            color: #3f7e9c;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #6f8ea8;
+            background: #f0f5fa;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+        }
+
+        .exp-description {
+            font-size: 0.9rem;
+            color: #2c4a66;
+            line-height: 1.45;
+            margin-top: 0.5rem;
+            padding-left: 0.2rem;
+            list-style-type: none;
+        }
+
+        .exp-description li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .exp-description li i {
+            font-size: 0.7rem;
+            color: #5f8dab;
+            width: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* educación */
+        .education-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            background: #fafdff;
+            padding: 0.6rem 0.9rem;
+            border-radius: 14px;
+            border: 1px solid #eef2f8;
+        }
+
+        .edu-title {
+            font-weight: 600;
+            color: #1d4b68;
+        }
+
+        .edu-institution {
+            font-size: 0.85rem;
+            color: #597f9b;
+        }
+
+        .edu-date {
+            font-size: 0.75rem;
+            color: #6c8eaa;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            border-top: 1px solid #e9edf2;
+        }
+
+        /* responsive */
+        @media (max-width: 650px) {
+            body {
+                padding: 1rem;
+            }
+            .header, .content {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+            .name {
+                font-size: 1.9rem;
+            }
+            .contact-bar {
+                gap: 0.9rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .exp-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+
+        /* sutil impresión */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .contact-item a {
+                text-decoration: none;
+                color: black;
+            }
+            .skill-chip {
+                background: #f0f0f0;
+                border: 1px solid #ccc;
+                print-color-adjust: exact;
+            }
+        }
+
+        .small-note {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 1rem;
+            color: #8ca3b5;
+        }
+        .separator-dot {
+            margin: 0 0.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="resume">
+    <div class="header">
+        <div class="name">JUAN PABLO LOZADA GÓMEZ</div>
+        <div class="badge-role">Desarrollador Frontend · Background Fullstack</div>
+        <div class="contact-bar">
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Bucaramanga, Colombia</span></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> <span>(+57) 315 254 7066</span></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:lozadagomezj@gmail.com">lozadagomezj@gmail.com</a></div>
+            <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/jualoz" target="_blank" rel="noopener noreferrer">linkedin.com/in/jualoz</a></div>
+            <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/Jualoz" target="_blank" rel="noopener noreferrer">github.com/Jualoz</a></div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <!-- Perfil profesional -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-user-astronaut"></i>
+                <span>PERFIL PROFESIONAL</span>
+            </div>
+            <div class="profile-text">
+                Desarrollador orientado a Frontend con experiencia Fullstack, enfocado en la construcción de aplicaciones web responsivas y centradas en el usuario. 
+                Experiencia en desarrollo de interfaces, consumo de APIs REST y optimización del rendimiento en el cliente. 
+                Capacidad para transformar requerimientos en soluciones limpias, mantenibles y escalables.
+            </div>
+        </div>
+
+        <!-- Habilidades Técnicas: separadas por categoría visual sobria -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-code"></i>
+                <span>HABILIDADES TÉCNICAS</span>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-laptop-code" style="font-size:0.75rem; margin-right: 6px;"></i> Frontend</h4>
+                <div class="skills-wrapper">
+                    <span class="skill-chip">Angular</span>
+                    <span class="skill-chip">TypeScript</span>
+                    <span class="skill-chip">JavaScript (ES6+)</span>
+                    <span class="skill-chip">HTML5 & CSS3</span>
+                    <span class="skill-chip">SCSS / Sass</span>
+                    <span class="skill-chip">Diseño Responsivo</span>
+                    <span class="skill-chip">RxJS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-tools" style="font-size:0.75rem; margin-right: 6px;"></i> Herramientas & Metodologías</h4>
+                <div class="skills-wrapper">
+                    <span class="skill-chip">Git / GitHub</span>
+                    <span class="skill-chip">NPM</span>
+                    <span class="skill-chip">Metodologías Ágiles (Scrum)</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-server" style="font-size:0.75rem; margin-right: 6px;"></i> Backend & APIs</h4>
+                <div class="skills-wrapper">
+                    <span class="skill-chip">.NET</span>
+                    <span class="skill-chip">SQL Server</span>
+                    <span class="skill-chip">Integración de APIs REST</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiencia profesional -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-briefcase"></i>
+                <span>EXPERIENCIA</span>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div class="exp-title">Practicante de Desarrollo de Software</div>
+                    <div class="exp-date">03/2024 – Actualidad</div>
+                </div>
+                <div class="exp-company">Transforsweb · Bucaramanga, Colombia</div>
+                <ul class="exp-description">
+                    <li><i class="fas fa-circle" style="font-size: 0.45rem;"></i> Desarrollo de componentes UI reutilizables y modernos, mejorando la experiencia de usuario en aplicaciones internas.</li>
+                    <li><i class="fas fa-circle" style="font-size: 0.45rem;"></i> Integración fluida con APIs REST, asegurando consumo eficiente de datos y gestión de estados con RxJS.</li>
+                    <li><i class="fas fa-circle" style="font-size: 0.45rem;"></i> Corrección de errores, optimización de rendimiento en el cliente y trabajo colaborativo bajo metodologías ágiles (Scrum).</li>
+                    <li><i class="fas fa-circle" style="font-size: 0.45rem;"></i> Colaboración con equipo multidisciplinario, code reviews y buenas prácticas con Git.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Educación (con ajuste a Tecnólogo) -->
+        <div class="section">
+            <div class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EDUCACIÓN</span>
+            </div>
+            <div class="education-item">
+                <div>
+                    <span class="edu-title">Tecnólogo en Desarrollo de Software</span>
+                    <span class="edu-institution"> · Campuslands</span>
+                </div>
+                <div class="edu-date">2023</div>
+            </div>
+            <!-- Nota adicional: formación continua / cursos si se quiere agregar pero se mantiene fiel al original -->
+            <div style="margin-top: 0.8rem; font-size: 0.75rem; color: #5b7f9a; padding-left: 0.3rem;">
+                <i class="fas fa-certificate"></i> Formación continua en arquitectura frontend, Angular avanzado y buenas prácticas.
+            </div>
+        </div>
+        
+        <!-- Pequeña línea sutil que resalta perfil fullstack / adicional opcional pero sobrio -->
+        <hr>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #6c8ea8;">
+            <span><i class="fas fa-language"></i> Español nativo · Inglés técnico (lectura/escritura)</span>
+            <span><i class="fas fa-calendar-alt"></i> Disponibilidad inmediata</span>
+        </div>
+        <div class="small-note">
+            CV actualizado · Portfolio y proyectos en GitHub
+        </div>
+    </div>
+</div>
+</body>
+</html>
