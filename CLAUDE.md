@@ -11,39 +11,43 @@ Es una sola página estática publicada con **GitHub Pages** en https://jualoz.g
 ## Estructura
 
 - `index.html` — todo el sitio: HTML + CSS embebido en `<style>` + un poco de JavaScript vanilla al final. Sin build, dependencias ni tests.
-- Recursos externos por CDN: Google Fonts (Inter, Space Grotesk, JetBrains Mono) y Font Awesome `6.5.2` (cdnjs).
+- Recursos externos por CDN: Google Fonts (Archivo, Manrope, JetBrains Mono, Caveat) y Font Awesome `6.5.2` (cdnjs).
 
 Para verlo basta con abrir `index.html` en el navegador. Cada push a `main` se publica en GitHub Pages.
 
 ## Secciones (en orden)
 
-1. Barra de navegación fija: logo "JL", enlaces a secciones, botón de tema claro/oscuro y "Descargar CV" (`window.print()`).
-2. Hero: estado de disponibilidad, nombre, rol, resumen, botones y datos de contacto (`.hero-meta`); a la derecha, tarjeta de código decorativa (`.code-card`, `aria-hidden`).
-3. `#perfil` — texto del perfil + tres tarjetas `.highlight`.
-4. `#habilidades` — tres `.skill-card` con `.chip`: Frontend, Backend & APIs, Herramientas & Metodologías.
-5. `#experiencia` — línea de tiempo (`.timeline` / `.tl-item`): Transforsweb, 03/2024 – Actualidad.
-6. `#educacion` — tres `.edu-card`: título (Campuslands, 2023), formación continua, idiomas y disponibilidad.
-7. `#contacto` — bloque `.cta` oscuro con botones y redes; pie con año dinámico.
+1. Barra de navegación fija (`.nav`, transparente hasta hacer scroll): marca "JL · LOZADA", enlaces, botón PDF (`window.print()`) y "Contacto".
+2. Hero (`#hero`): kicker con nombre y rol, titular grande con palabra en rojo, resumen, `.tag`s, botones y áreas. A la derecha, mockups decorativos de laptop y móvil hechos en CSS (`.devices`, `aria-hidden`) con notas manuscritas (`.note`).
+3. Cinta de tecnologías animada (`.marquee`) e índice numerado 01–04 (`.index`).
+4. `#perfil` (01) — texto + estadísticas (`.stats`; los años se calculan en JS desde 03/2024 con `data-years`).
+5. `#stack` (02) — tres `.stack-card` con `.chip`: Frontend, Backend & APIs, Herramientas & Metodologías.
+6. `#experiencia` (03) — filas `.job` (fecha a la izquierda, detalle a la derecha): Transforsweb, 03/2024 – Actualidad.
+7. `#educacion` (04) — tres `.edu-card`: título (Campuslands, 2023), formación continua, idiomas y disponibilidad.
+8. `#contacto` (05) — titular grande, email destacado (`.big-mail`) y `.contact-list`; pie con año dinámico.
 
 ## Diseño
 
-- Tokens de color en `:root` (claro); el oscuro se define dos veces: en `@media (prefers-color-scheme: dark)` con `:root:not([data-theme="light"])` y en `:root[data-theme="dark"]`. Al cambiar un color, actualizar ambos bloques.
-- El tema elegido se guarda en `localStorage` (`theme`) y se aplica en un script del `<head>` para evitar parpadeo.
-- Acento: degradado cian → índigo (`--grad` para texto/decoración, `--btn-grad` más oscuro para botones con texto blanco).
-- Animación de aparición: clase `.reveal` en contenedores (usa `translate`, no `transform`, para no chocar con el hover de `.card`). Solo se activa si existe `IntersectionObserver` (clase `js` en `<html>`). Se respeta `prefers-reduced-motion`.
-- Breakpoints: 900px (columnas → 1–2), 820px (se ocultan los enlaces del nav), 620px (móvil). Los hijos de las grids llevan `min-width: 0` para que la tarjeta de código no desborde en móvil.
-- `@media print` genera un CV limpio: fuerza colores claros y oculta nav, decoración, botones, highlights y contacto. Verificarlo al cambiar el layout.
+- Estética oscura "cinematográfica" inspirada en el shot de Dribbble *Spidey – Interactive Developer Portfolio*: fondo casi negro, acento rojo, tipografía display muy pesada, notas a mano y grano de película (`body::after`).
+- Solo tema oscuro (no hay selector de tema). Tokens en `:root`: `--red` (decoración), `--red-text` (texto rojo con buen contraste), `--red-btn` (fondo de botones con texto blanco).
+- Fuentes: `--font-display` (Archivo 800/900, títulos), `--font-body` (Manrope), `--font-mono` (etiquetas, números, chips), `--font-script` (Caveat, notas).
+- Títulos de sección: `.sec-num` ("0N — Nombre") + `h2` con punto final en `.accent`.
+- Mockups: se escalan con unidades de contenedor (`cqw`) dentro de `.devices` (`container-type: inline-size`). Al pasar el ratón, JS mueve el foco de luz (`--mx`/`--my` en `.hero`) y gira los dispositivos (`--rx`/`--ry`), solo con puntero fino y sin `prefers-reduced-motion`.
+- Usar `overflow: clip` (no `hidden`) en contenedores: con `hidden` el hero se convertía en contenedor con scroll y el contenido se desplazaba solo.
+- Animación de aparición: clase `.reveal` en contenedores (usa `translate`, no `transform`, para no chocar con el hover de `.card`). Solo se activa si existe `IntersectionObserver` (clase `js` en `<html>`).
+- Breakpoints: 980px (columnas → 1–2), 860px (se ocultan los enlaces del nav), 620px (móvil). Los hijos de las grids llevan `min-width: 0`.
+- `@media print` genera un CV claro y limpio: muestra `.print-header` (nombre y contacto, solo impresión) y oculta nav, mockups, cinta, índice, notas, estadísticas y contacto. Verificarlo al cambiar el layout.
 
 ## Convenciones
 
 - Todo el contenido y los comentarios están en **español**; mantenerlo así.
-- Reutilizar las clases existentes (`.section`, `.section-head`, `.eyebrow`, `.card`, `.icon-tile`, `.chips`/`.chip`, `.item-list`, `.date-pill`) al añadir contenido.
+- Reutilizar las clases existentes (`.section`, `.sec-head`, `.sec-num`, `.card`, `.icon-tile`, `.chips`/`.chip`, `.tag`, `.item-list`, `.btn-red`/`.btn-ghost`/`.btn-outline`) al añadir contenido.
 - No inventar datos del CV (proyectos, cifras, empresas): solo lo que el usuario haya dado.
 - Iconos con Font Awesome 6.5 (`fas` / `far` / `fab`).
 - Commits cortos en inglés, en imperativo (p. ej. `Update job title ...`, `Add portfolio link ...`).
 
 ## Ideas pendientes
 
-- Sección de proyectos destacados (necesita los proyectos reales del usuario).
-- Foto o avatar en el hero.
+- Sección de proyectos destacados con capturas y vista previa en `iframe` bajo demanda (necesita los proyectos reales del usuario). Encaja como "05 — Proyectos" y los mockups del hero podrían mostrar capturas reales.
+- Foto del usuario en el hero (la referencia usa un retrato en blanco y negro con luz roja).
 - Imagen `og:image` para la vista previa al compartir el enlace.
