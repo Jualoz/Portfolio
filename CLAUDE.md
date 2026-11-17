@@ -18,7 +18,7 @@ Para verlo basta con abrir `index.html` en el navegador. Cada push a `main` se p
 ## Secciones (en orden)
 
 1. Barra de navegación fija (`.nav`, transparente hasta hacer scroll): marca "JL · LOZADA", enlaces, botón PDF (`window.print()`) y "Contacto".
-2. Hero (`#hero`): kicker con nombre y rol, titular grande con palabra en rojo, resumen, `.tag`s, botones y áreas. A la derecha, mockups decorativos de laptop y móvil hechos en CSS (`.devices`, `aria-hidden`) con notas manuscritas (`.note`).
+2. Hero (`#hero`): kicker con nombre y rol, titular grande con palabra destacada en gris, resumen, `.tag`s, botones y áreas. A la derecha, mockups decorativos de laptop y móvil hechos en CSS (`.devices`, `aria-hidden`) con notas manuscritas (`.note`).
 3. Cinta de tecnologías animada (`.marquee`) e índice numerado 01–04 (`.index`).
 4. `#perfil` (01) — texto + estadísticas (`.stats`; los años se calculan en JS desde 03/2024 con `data-years`).
 5. `#stack` (02) — tres `.stack-card` con `.chip`: Frontend, Backend & APIs, Herramientas & Metodologías.
@@ -28,8 +28,8 @@ Para verlo basta con abrir `index.html` en el navegador. Cada push a `main` se p
 
 ## Diseño
 
-- Estética oscura "cinematográfica" inspirada en el shot de Dribbble *Spidey – Interactive Developer Portfolio*: fondo casi negro, acento rojo, tipografía display muy pesada, notas a mano y grano de película (`body::after`).
-- Solo tema oscuro (no hay selector de tema). Tokens en `:root`: `--red` (decoración), `--red-text` (texto rojo con buen contraste), `--red-btn` (fondo de botones con texto blanco).
+- Estética oscura "cinematográfica" inspirada en el shot de Dribbble *Spidey – Interactive Developer Portfolio*: fondo casi negro, acento gris oscuro (monocromo), tipografía display muy pesada, notas a mano y grano de película (`body::after`).
+- Solo tema oscuro (no hay selector de tema). Tokens en `:root`: `--accent` (decoración, líneas), `--accent-text` (texto destacado con buen contraste), `--accent-btn` (fondo de botones con texto blanco), `--accent-glow` y `--accent-soft`. El acento era rojo y se cambió a gris oscuro; no reintroducir rojo.
 - Fuentes: `--font-display` (Archivo 800/900, títulos), `--font-body` (Manrope), `--font-mono` (etiquetas, números, chips), `--font-script` (Caveat, notas).
 - Títulos de sección: `.sec-num` ("0N — Nombre") + `h2` con punto final en `.accent`.
 - Mockups: se escalan con unidades de contenedor (`cqw`) dentro de `.devices` (`container-type: inline-size`). Al pasar el ratón, JS mueve el foco de luz (`--mx`/`--my` en `.hero`) y gira los dispositivos (`--rx`/`--ry`), solo con puntero fino y sin `prefers-reduced-motion`.
@@ -41,7 +41,7 @@ Para verlo basta con abrir `index.html` en el navegador. Cada push a `main` se p
 ## Convenciones
 
 - Todo el contenido y los comentarios están en **español**; mantenerlo así.
-- Reutilizar las clases existentes (`.section`, `.sec-head`, `.sec-num`, `.card`, `.icon-tile`, `.chips`/`.chip`, `.tag`, `.item-list`, `.btn-red`/`.btn-ghost`/`.btn-outline`) al añadir contenido.
+- Reutilizar las clases existentes (`.section`, `.sec-head`, `.sec-num`, `.card`, `.icon-tile`, `.chips`/`.chip`, `.tag`, `.item-list`, `.btn-accent`/`.btn-ghost`/`.btn-outline`) al añadir contenido.
 - No inventar datos del CV (proyectos, cifras, empresas): solo lo que el usuario haya dado.
 - Iconos con Font Awesome 6.5 (`fas` / `far` / `fab`).
 - Commits cortos en inglés, en imperativo (p. ej. `Update job title ...`, `Add portfolio link ...`).
