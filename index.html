@@ -10,7 +10,7 @@
     <meta property="og:title" content="Juan Pablo Lozada · Desarrollador Fullstack">
     <meta property="og:description" content="Desarrollador Fullstack con .NET Core, Entity Framework y Angular. Bucaramanga, Colombia.">
     <meta property="og:url" content="https://jualoz.github.io/Portfolio/">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090b'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%23a1a1aa'%3EJL%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2309090b'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%23529494'%3EJL%3C/text%3E%3C/svg%3E">
 
     <!-- Soporte de animaciones antes de pintar, para evitar parpadeos -->
     <script>
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* ---------- Tokens de diseño (tema oscuro cinematográfico, acento gris oscuro) ---------- */
+        /* ---------- Tokens de diseño (tema oscuro cinematográfico, acento verde azulado) ---------- */
         :root {
             --bg: #09090b;
             --bg-2: #0e0e11;
@@ -35,12 +35,15 @@
             --border-2: rgba(255, 255, 255, 0.16);
             --text: #f5f5f4;
             --text-2: #a8a8b0;
-            --text-3: #77777f;
-            --accent: #52525b;
-            --accent-text: #8a8a93;
-            --accent-btn: #3f3f46;
-            --accent-glow: rgba(113, 113, 122, 0.35);
-            --accent-soft: rgba(113, 113, 122, 0.12);
+            --text-3: #85858d;
+            --accent: #327878;
+            --accent-rgb: 50, 120, 120;
+            --accent-text: #529494;
+            --accent-btn: #327878;
+            --accent-soft: rgba(var(--accent-rgb), 0.12);
+            --on-accent: #ffffff;
+            --accent-2: #92c6d3;
+            --accent-2-rgb: 146, 198, 211;
             --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
             --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
@@ -91,11 +94,17 @@
             font-weight: 800;
             letter-spacing: -0.035em;
             line-height: 1.02;
+            text-wrap: balance;
+        }
+
+        p,
+        li {
+            text-wrap: pretty;
         }
 
         ::selection {
             background: var(--accent);
-            color: #fff;
+            color: var(--on-accent);
         }
 
         .container {
@@ -174,13 +183,13 @@
 
         .btn-accent {
             background: var(--accent-btn);
-            color: #fff;
-            box-shadow: 0 10px 30px -10px var(--accent-glow);
+            color: var(--on-accent);
+            box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.8);
         }
 
         .btn-accent:hover {
             transform: translateY(-2px);
-            box-shadow: 0 16px 40px -10px var(--accent-glow);
+            box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.9);
         }
 
         .btn-ghost {
@@ -200,7 +209,7 @@
         .btn-outline:hover {
             background: var(--accent-btn);
             border-color: var(--accent-btn);
-            color: #fff;
+            color: var(--on-accent);
         }
 
         .btn-sm {
@@ -260,7 +269,7 @@
             place-items: center;
             border-radius: 9px;
             background: var(--accent-soft);
-            border: 1px solid rgba(113, 113, 122, 0.4);
+            border: 1px solid rgba(var(--accent-rgb), 0.4);
             color: var(--accent-text);
             font-family: var(--font-display);
             font-weight: 900;
@@ -341,8 +350,8 @@
             inset: 0;
             z-index: -2;
             background:
-                radial-gradient(640px circle at var(--mx) var(--my), rgba(113, 113, 122, 0.16), transparent 60%),
-                radial-gradient(900px 600px at 95% 10%, rgba(113, 113, 122, 0.14), transparent 60%),
+                radial-gradient(640px circle at var(--mx) var(--my), rgba(var(--accent-rgb), 0.16), transparent 60%),
+                radial-gradient(900px 600px at 95% 10%, rgba(var(--accent-2-rgb), 0.12), transparent 60%),
                 radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
         }
 
@@ -359,14 +368,14 @@
             top: -20%;
             width: 1px;
             height: 140%;
-            background: linear-gradient(transparent, rgba(113, 113, 122, 0.7) 40%, rgba(113, 113, 122, 0.15) 70%, transparent);
+            background: linear-gradient(transparent, rgba(var(--accent-rgb), 0.7) 40%, rgba(var(--accent-rgb), 0.15) 70%, transparent);
             transform: rotate(28deg);
             filter: blur(0.4px);
             animation: flicker 6s ease-in-out infinite;
         }
 
         .streak.s1 { right: 18%; }
-        .streak.s2 { right: 12%; opacity: 0.5; animation-delay: -2s; }
+        .streak.s2 { right: 12%; opacity: 0.5; animation-delay: -2s; background: linear-gradient(transparent, rgba(var(--accent-2-rgb), 0.6) 40%, transparent); }
         .streak.s3 { right: 4%; width: 2px; opacity: 0.35; animation-delay: -4s; }
 
         @keyframes flicker {
@@ -383,21 +392,9 @@
 
         .hero-grid > *,
         .about > *,
-        .stack-grid > *,
+        .bento > *,
         .edu-grid > * {
             min-width: 0;
-        }
-
-        .kicker {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 26px;
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-2);
         }
 
         .live-dot {
@@ -423,7 +420,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.7rem, 6.4vw, 5.4rem);
+            font-size: clamp(2.4rem, 5.2vw, 4.4rem);
             font-weight: 900;
             margin-bottom: 26px;
         }
@@ -461,7 +458,7 @@
 
         .tag:hover {
             border-color: var(--accent);
-            color: var(--accent-text);
+            color: var(--accent-2);
         }
 
         .ctas {
@@ -488,6 +485,13 @@
             width: 40px;
             height: 1px;
             background: var(--accent);
+        }
+
+        .avail {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-2);
         }
 
         .areas span + span::before {
@@ -519,7 +523,7 @@
             right: 0;
             bottom: -18px;
             transform: rotate(-5deg);
-            color: var(--accent-text);
+            color: var(--accent-2);
             opacity: 0.85;
         }
 
@@ -550,7 +554,6 @@
             overflow: clip;
             box-shadow:
                 0 0 0 1px rgba(255, 255, 255, 0.08),
-                0 0 80px -10px var(--accent-glow),
                 0 40px 80px -20px rgba(0, 0, 0, 0.8);
         }
 
@@ -582,7 +585,7 @@
             flex-direction: column;
             padding: 2.4cqw 3cqw;
             background:
-                radial-gradient(circle at 85% 30%, rgba(113, 113, 122, 0.22), transparent 55%),
+                radial-gradient(circle at 85% 30%, rgba(var(--accent-rgb), 0.22), transparent 55%),
                 #0b0b0d;
         }
 
@@ -644,6 +647,7 @@
             padding: 0.7cqw 1.6cqw;
             border-radius: 0.6cqw;
             background: var(--accent-btn);
+            color: var(--on-accent);
             font-size: 1.2cqw;
             font-weight: 700;
         }
@@ -661,9 +665,9 @@
             overflow: clip;
         }
 
-        .tok-kw { color: #a1a1aa; }
+        .tok-kw { color: var(--accent-text); }
         .tok-key { color: #e4e4e7; }
-        .tok-str { color: #d4d4d8; }
+        .tok-str { color: var(--accent-2); }
         .tok-com { color: #6b6b74; font-style: italic; }
 
         .phone {
@@ -677,7 +681,6 @@
             background: #1c1c21;
             box-shadow:
                 0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 0 60px -10px var(--accent-glow),
                 -20px 30px 60px -10px rgba(0, 0, 0, 0.9);
             transform: translateZ(40px);
         }
@@ -736,7 +739,7 @@
             border-radius: 1.6cqw;
             background:
                 linear-gradient(160deg, transparent 30%, rgba(0, 0, 0, 0.55)),
-                linear-gradient(135deg, #52525b, #18181b);
+                linear-gradient(135deg, color-mix(in srgb, var(--accent) 65%, #000), color-mix(in srgb, var(--accent) 12%, #000));
             font-family: var(--font-display);
             font-weight: 900;
             font-size: 3.2cqw;
@@ -758,43 +761,75 @@
             color: var(--text-2);
         }
 
-        /* ---------- Cinta de tecnologías ---------- */
-        .marquee {
+        /* ---------- Bandas cruzadas de herramientas (se mueven solo con el scroll) ---------- */
+        .ribbons {
+            position: relative;
             overflow: clip;
-            padding: 22px 0;
-            border-block: 1px solid var(--border);
-            background: var(--bg-2);
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            padding: 48px 0 64px;
         }
 
-        .marquee-track {
+        .band {
+            width: 112%;
+            margin-left: -6%;
+            padding: 18px 0;
+            overflow: clip;
+        }
+
+        .band-back {
+            background: var(--surface-2);
+            color: var(--text-3);
+            rotate: 2.5deg;
+        }
+
+        .band-front {
+            position: relative;
+            z-index: 1;
+            margin-top: -46px;
+            background: var(--accent-btn);
+            color: var(--on-accent);
+            rotate: -3deg;
+            box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.9);
+        }
+
+        .band-track {
             display: flex;
             align-items: center;
-            gap: 36px;
+            gap: 56px;
             width: max-content;
-            animation: marquee 40s linear infinite;
+            padding-left: 32px;
+            list-style: none;
         }
 
-        .marquee span {
+        .band-track li {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             font-family: var(--font-display);
-            font-weight: 900;
-            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 800;
             letter-spacing: -0.02em;
-            text-transform: uppercase;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.28);
             white-space: nowrap;
         }
 
-        .marquee i {
-            font-style: normal;
-            font-size: 1.4rem;
-            color: var(--accent);
+        @supports (animation-timeline: view()) {
+            .band-track {
+                animation: band-slide linear both;
+                animation-timeline: view();
+            }
+
+            .band-back .band-track {
+                animation-name: band-slide-back;
+            }
         }
 
-        @keyframes marquee {
-            to { transform: translateX(-50%); }
+        @keyframes band-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-30%); }
+        }
+
+        @keyframes band-slide-back {
+            from { transform: translateX(-30%); }
+            to { transform: translateX(0); }
         }
 
         /* ---------- Índice numerado ---------- */
@@ -862,25 +897,6 @@
             margin-bottom: 56px;
         }
 
-        .sec-num {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--accent-text);
-        }
-
-        .sec-num::after {
-            content: '';
-            width: 56px;
-            height: 1px;
-            background: var(--accent);
-        }
-
         .sec-head h2 {
             font-size: clamp(2.6rem, 7vw, 5.2rem);
             font-weight: 900;
@@ -909,31 +925,32 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
             opacity: 0;
             transition: opacity 0.3s;
         }
 
         .card:hover {
             transform: translateY(-4px);
-            border-color: rgba(113, 113, 122, 0.35);
-            box-shadow: 0 30px 60px -30px var(--accent-glow);
+            border-color: rgba(var(--accent-rgb), 0.35);
+            box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
         }
 
         .card:hover::before {
             opacity: 1;
         }
 
-        .icon-tile {
-            width: 46px;
-            height: 46px;
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            border: 1px solid rgba(113, 113, 122, 0.3);
-            background: var(--accent-soft);
+        /* Título de tarjeta con icono en línea */
+        .card-title {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .card-title i {
+            flex: none;
+            font-size: 0.85em;
             color: var(--accent-text);
-            font-size: 1.05rem;
         }
 
         .chips {
@@ -955,7 +972,7 @@
 
         .chip:hover {
             border-color: var(--accent);
-            color: var(--text);
+            color: var(--accent-2);
         }
 
         /* Perfil */
@@ -1015,7 +1032,7 @@
 
         .stat strong em {
             font-style: normal;
-            color: var(--accent-text);
+            color: var(--accent-2);
         }
 
         .stat > span {
@@ -1034,31 +1051,160 @@
             transform: rotate(-4deg);
         }
 
-        /* Stack */
-        .stack-grid {
+        /* Caja de herramientas (bento con diagramas) */
+        .bento {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 20px;
         }
 
-        .stack-card .card-num {
-            position: absolute;
-            top: 26px;
-            right: 28px;
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            color: var(--text-3);
+        .tool {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: column;
         }
 
-        .stack-card h3 {
-            margin: 26px 0 8px;
+        .tool-wide {
+            grid-column: span 4;
+        }
+
+        .tool-art {
+            position: relative;
+            height: 150px;
+            margin-bottom: 24px;
+        }
+
+        .tool-wide .tool-art,
+        .tool-db .tool-art {
+            height: 200px;
+        }
+
+        .wires {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .wires path {
+            fill: none;
+            stroke: rgba(var(--accent-rgb), 0.6);
+            stroke-width: 1.5;
+            vector-effect: non-scaling-stroke;
+            transition: stroke 0.4s ease;
+        }
+
+        .tool:hover .wires path {
+            stroke: var(--accent-2);
+        }
+
+        .node {
+            position: absolute;
+            left: calc(var(--x) * 1%);
+            top: calc(var(--y) * 1%);
+            translate: -50% -50%;
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            border: 1px solid var(--border-2);
+            background: linear-gradient(180deg, #1d1d23, #101013);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 20px -10px rgba(0, 0, 0, 0.9);
+            color: var(--text-2);
+            font-size: 1.15rem;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .node-text {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+        }
+
+        .node-core {
+            width: 66px;
+            height: 66px;
+            border-radius: 16px;
+            border-color: rgba(var(--accent-rgb), 0.6);
+            background: linear-gradient(180deg, #172221, #0e1313);
+            color: var(--accent-2);
+            font-size: 1.45rem;
+        }
+
+        .tool:hover .node {
+            color: var(--text);
+            border-color: rgba(var(--accent-2-rgb), 0.45);
+        }
+
+        .tool:hover .node-core {
+            color: var(--accent-2);
+            border-color: var(--accent-2);
+        }
+
+        /* Órbita de bases de datos: gira al pasar el ratón */
+        .orbit {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transition: rotate 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tool:hover .orbit {
+            rotate: 60deg;
+        }
+
+        .ring {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: calc(var(--r) * 2);
+            height: calc(var(--r) * 2);
+            translate: -50% -50%;
+            border-radius: 50%;
+            border: 1px solid var(--border-2);
+        }
+
+        .ring-mid {
+            border-color: rgba(var(--accent-rgb), 0.55);
+        }
+
+        .sat {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            translate: -50% -50%;
+            transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(var(--a) * -1));
+            border-radius: 50%;
+            border: 1px solid var(--border-2);
+            background: #121216;
+            color: var(--text-2);
+            font-size: 0.72rem;
+        }
+
+        .tool h3 {
+            margin-bottom: 8px;
             font-size: 1.45rem;
             letter-spacing: -0.02em;
+            color: var(--accent-2);
         }
 
-        .stack-card > p {
-            margin-bottom: 22px;
-            font-size: 0.94rem;
+        .tool-list {
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .tool-note {
+            margin-top: auto;
+            font-family: var(--font-script);
+            font-size: 1.35rem;
+            line-height: 1.15;
             color: var(--text-2);
         }
 
@@ -1091,7 +1237,7 @@
             gap: 10px;
             padding: 5px 12px;
             border-radius: 999px;
-            border: 1px solid rgba(113, 113, 122, 0.4);
+            border: 1px solid rgba(var(--accent-rgb), 0.4);
             background: var(--accent-soft);
             font-family: var(--font-mono);
             font-size: 0.7rem;
@@ -1108,7 +1254,7 @@
         .job-co {
             margin-bottom: 24px;
             font-weight: 600;
-            color: var(--accent-text);
+            color: var(--accent-2);
         }
 
         .job-co span {
@@ -1147,7 +1293,7 @@
         }
 
         .edu-card h3 {
-            margin: 24px 0 6px;
+            margin: 0 0 6px;
             font-size: 1.25rem;
             letter-spacing: -0.02em;
         }
@@ -1209,7 +1355,8 @@
             inset: 0;
             z-index: -1;
             background:
-                radial-gradient(700px 420px at 50% 100%, rgba(113, 113, 122, 0.2), transparent 70%);
+                radial-gradient(700px 420px at 30% 100%, rgba(var(--accent-rgb), 0.2), transparent 70%),
+                radial-gradient(600px 380px at 80% 100%, rgba(var(--accent-2-rgb), 0.1), transparent 70%);
         }
 
         .contact-inner {
@@ -1266,7 +1413,7 @@
             right: 4%;
             top: 30px;
             font-size: 1.8rem;
-            color: var(--accent-text);
+            color: var(--accent-2);
             transform: rotate(-8deg);
         }
 
@@ -1306,7 +1453,7 @@
             padding: 28px 0 36px;
             font-family: var(--font-mono);
             font-size: 0.74rem;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.04em;
             color: var(--text-3);
         }
 
@@ -1356,9 +1503,22 @@
                 max-width: 640px;
             }
 
-            .stack-grid,
             .edu-grid {
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .bento {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tool {
+                grid-column: span 1;
+            }
+
+            .tool-wide,
+            .tool-db,
+            .tool:last-child {
+                grid-column: span 2;
             }
 
             .index {
@@ -1400,9 +1560,16 @@
                 padding: 80px 0;
             }
 
-            .stack-grid,
-            .edu-grid {
+            .edu-grid,
+            .bento {
                 grid-template-columns: 1fr;
+            }
+
+            .tool,
+            .tool-wide,
+            .tool-db,
+            .tool:last-child {
+                grid-column: auto;
             }
 
             .card {
@@ -1460,9 +1627,10 @@
                 --text: #111111;
                 --text-2: #333333;
                 --text-3: #555555;
-                --accent: #3f3f46;
-                --accent-text: #3f3f46;
-                --accent-soft: #f1f1f3;
+                --accent: #327878;
+                --accent-text: #2a6767;
+                --accent-soft: #e8f1f1;
+                --accent-2: #2f6676;
                 color-scheme: light;
             }
 
@@ -1473,8 +1641,8 @@
             }
 
             body::after,
-            .nav, .hero-fx, .hero-visual, .marquee, .index, .ctas, .areas, .kicker,
-            .hero h1, .note, .note-3, #contacto, .footer, .skip-link {
+            .nav, .hero-fx, .hero-visual, .ribbons, .index, .ctas, .areas,
+            .hero h1, .note, .note-3, .tool-art, .tool-note, #contacto, .footer, .skip-link {
                 display: none !important;
             }
 
@@ -1536,10 +1704,6 @@
                 display: none;
             }
 
-            .sec-num {
-                margin-bottom: 4px;
-            }
-
             .about {
                 display: block;
             }
@@ -1562,14 +1726,24 @@
                 transform: none;
             }
 
-            .stack-card h3,
-            .edu-card h3 {
-                margin-top: 8px;
+            .bento {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
             }
 
-            .icon-tile,
-            .card-num {
-                display: none !important;
+            .bento > * {
+                grid-column: auto !important;
+            }
+
+            .tool h3,
+            .edu-card h3 {
+                font-size: 12pt;
+                color: var(--accent-text);
+            }
+
+            .tool-list {
+                margin-bottom: 0;
+                color: var(--text-2);
             }
 
             .job {
@@ -1610,7 +1784,7 @@
         </nav>
         <div class="nav-actions">
             <button class="btn btn-icon" type="button" onclick="window.print()" title="Guardar como PDF" aria-label="Descargar CV en PDF">
-                <i class="fas fa-file-arrow-down"></i>
+                <i aria-hidden="true" class="fas fa-file-arrow-down"></i>
             </button>
             <a class="btn btn-outline btn-sm" href="#contacto">Contacto</a>
         </div>
@@ -1642,11 +1816,10 @@
                     </ul>
                 </div>
 
-                <p class="kicker"><span class="live-dot"></span>Juan Pablo Lozada · Desarrollador Fullstack</p>
                 <h1>Construyo apps web <br>hechas para ser <br><span class="accent">exploradas.</span></h1>
                 <p class="lead">
-                    Aplicaciones escalables y mantenibles con <strong>.NET Core</strong>, <strong>Entity Framework</strong>
-                    y <strong>Angular</strong>: APIs REST sólidas detrás, interfaces modernas y responsivas delante.
+                    Soy <strong>Juan Pablo Lozada</strong>, desarrollador Fullstack. Aplicaciones escalables y mantenibles
+                    con .NET Core, Entity Framework y Angular: APIs REST sólidas detrás, interfaces modernas y responsivas delante.
                 </p>
                 <ul class="tags">
                     <li class="tag">Angular</li>
@@ -1655,10 +1828,10 @@
                     <li class="tag">SQL Server</li>
                 </ul>
                 <div class="ctas">
-                    <a class="btn btn-accent" href="#experiencia">Ver experiencia <i class="fas fa-arrow-right"></i></a>
-                    <button class="btn btn-ghost" type="button" onclick="window.print()"><i class="fas fa-file-arrow-down"></i> Descargar CV</button>
+                    <a class="btn btn-accent" href="#experiencia">Ver experiencia <i aria-hidden="true" class="fas fa-arrow-right"></i></a>
+                    <button class="btn btn-ghost" type="button" onclick="window.print()"><i aria-hidden="true" class="fas fa-file-arrow-down"></i> Descargar CV</button>
                 </div>
-                <p class="areas"><span>Frontend</span><span>Backend</span><span>APIs REST</span></p>
+                <p class="areas"><span class="avail"><span class="live-dot"></span> Disponible</span><span>Frontend</span><span>Backend</span><span>APIs REST</span></p>
             </div>
 
             <!-- Laptop y móvil decorativos -->
@@ -1707,18 +1880,10 @@
         </div>
     </section>
 
-    <!-- Cinta de tecnologías -->
-    <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-            <span>Angular</span><i>✦</i><span>.NET Core</span><i>✦</i><span>Entity Framework</span><i>✦</i><span>SQL Server</span><i>✦</i><span>TypeScript</span><i>✦</i><span>RxJS</span><i>✦</i><span>APIs REST</span><i>✦</i>
-            <span>Angular</span><i>✦</i><span>.NET Core</span><i>✦</i><span>Entity Framework</span><i>✦</i><span>SQL Server</span><i>✦</i><span>TypeScript</span><i>✦</i><span>RxJS</span><i>✦</i><span>APIs REST</span><i>✦</i>
-        </div>
-    </div>
-
     <!-- Índice numerado -->
     <nav class="container index" aria-label="Índice de secciones">
         <a href="#perfil"><span class="idx-top">01</span><strong>Perfil</strong><small>Quién soy y cómo trabajo.</small></a>
-        <a href="#stack"><span class="idx-top">02</span><strong>Stack</strong><small>Tecnologías con las que construyo.</small></a>
+        <a href="#stack"><span class="idx-top">02</span><strong>Herramientas</strong><small>Tecnologías con las que construyo.</small></a>
         <a href="#experiencia"><span class="idx-top">03</span><strong>Experiencia</strong><small>Dónde aplico lo que sé.</small></a>
         <a href="#educacion"><span class="idx-top">04</span><strong>Educación</strong><small>Formación y aprendizaje continuo.</small></a>
     </nav>
@@ -1727,7 +1892,6 @@
     <section class="section" id="perfil">
         <div class="container">
             <header class="sec-head reveal">
-                <span class="sec-num">01 — Perfil</span>
                 <h2>Sobre mí<span class="accent">.</span></h2>
             </header>
             <div class="about reveal">
@@ -1755,62 +1919,134 @@
         </div>
     </section>
 
-    <!-- 02 · Stack -->
+    <!-- 02 · Caja de herramientas (bento con diagramas) -->
     <section class="section" id="stack">
         <div class="container">
             <header class="sec-head reveal">
-                <span class="sec-num">02 — Habilidades técnicas</span>
-                <h2>Mi stack<span class="accent">.</span></h2>
+                <h2>Caja de herramientas<span class="accent">.</span></h2>
                 <p>Tecnologías y herramientas con las que trabajo a diario.</p>
             </header>
-            <div class="stack-grid reveal">
-                <article class="card stack-card">
-                    <span class="card-num">/01</span>
-                    <span class="icon-tile"><i class="fas fa-laptop-code"></i></span>
+            <div class="bento reveal">
+                <article class="card tool tool-wide">
+                    <div class="tool-art" aria-hidden="true">
+                        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M50 64 V16"/>
+                            <path d="M50 40 H30 V20"/>
+                            <path d="M50 40 H70 V20"/>
+                            <path d="M16 64 H84"/>
+                        </svg>
+                        <span class="node" style="--x: 30; --y: 20"><i class="fab fa-angular"></i></span>
+                        <span class="node" style="--x: 50; --y: 16"><i class="fab fa-html5"></i></span>
+                        <span class="node" style="--x: 70; --y: 20"><i class="fab fa-sass"></i></span>
+                        <span class="node" style="--x: 16; --y: 64"><i class="fab fa-js"></i></span>
+                        <span class="node node-text" style="--x: 84; --y: 64">TS</span>
+                        <span class="node node-core" style="--x: 50; --y: 64"><i class="fas fa-code"></i></span>
+                    </div>
                     <h3>Frontend</h3>
-                    <p>Interfaces modernas, responsivas y orientadas al usuario.</p>
-                    <ul class="chips">
-                        <li class="chip">Angular</li>
-                        <li class="chip">TypeScript</li>
-                        <li class="chip">JavaScript (ES6+)</li>
-                        <li class="chip">RxJS</li>
-                        <li class="chip">HTML5 &amp; CSS3</li>
-                        <li class="chip">SCSS / Sass</li>
-                        <li class="chip">Diseño Responsivo</li>
-                    </ul>
+                    <p class="tool-list">Angular, TypeScript, JavaScript (ES6+), RxJS, HTML5 &amp; CSS3, SCSS / Sass y diseño responsivo.</p>
+                    <p class="tool-note">interfaces modernas, responsivas y orientadas al usuario</p>
                 </article>
-                <article class="card stack-card">
-                    <span class="card-num">/02</span>
-                    <span class="icon-tile"><i class="fas fa-server"></i></span>
-                    <h3>Backend &amp; APIs</h3>
-                    <p>Servicios REST y lógica de negocio sobre .NET con bases de datos SQL.</p>
-                    <ul class="chips">
-                        <li class="chip">.NET Core</li>
-                        <li class="chip">Entity Framework</li>
-                        <li class="chip">SQL Server</li>
-                        <li class="chip">APIs REST</li>
-                    </ul>
+
+                <article class="card tool tool-db">
+                    <div class="tool-art" aria-hidden="true">
+                        <div class="orbit">
+                            <span class="ring" style="--r: 44px"></span>
+                            <span class="ring ring-mid" style="--r: 70px"></span>
+                            <span class="ring" style="--r: 96px"></span>
+                            <span class="sat" style="--a: -40deg; --r: 70px"><i class="fas fa-table"></i></span>
+                            <span class="sat" style="--a: 150deg; --r: 70px"><i class="fas fa-key"></i></span>
+                            <span class="sat" style="--a: 70deg; --r: 96px"><i class="fas fa-link"></i></span>
+                        </div>
+                        <span class="node node-core" style="--x: 50; --y: 50"><i class="fas fa-database"></i></span>
+                    </div>
+                    <h3>Bases de datos</h3>
+                    <p class="tool-list">SQL Server y Entity Framework.</p>
+                    <p class="tool-note">datos relacionales, de la tabla a la API</p>
                 </article>
-                <article class="card stack-card">
-                    <span class="card-num">/03</span>
-                    <span class="icon-tile"><i class="fas fa-screwdriver-wrench"></i></span>
+
+                <article class="card tool">
+                    <div class="tool-art" aria-hidden="true">
+                        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 50 H82"/></svg>
+                        <span class="node" style="--x: 18; --y: 50"><i class="fab fa-microsoft"></i></span>
+                        <span class="node node-core" style="--x: 50; --y: 50"><i class="fas fa-server"></i></span>
+                        <span class="node node-text" style="--x: 82; --y: 50">EF</span>
+                    </div>
+                    <h3>Backend</h3>
+                    <p class="tool-list">.NET Core y Entity Framework.</p>
+                    <p class="tool-note">lógica de negocio escalable y mantenible</p>
+                </article>
+
+                <article class="card tool">
+                    <div class="tool-art" aria-hidden="true">
+                        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 50 H82"/></svg>
+                        <span class="node node-text" style="--x: 18; --y: 50">REST</span>
+                        <span class="node node-core" style="--x: 50; --y: 50"><i class="fas fa-plug"></i></span>
+                        <span class="node node-text" style="--x: 82; --y: 50">RxJS</span>
+                    </div>
+                    <h3>APIs</h3>
+                    <p class="tool-list">APIs REST y RxJS.</p>
+                    <p class="tool-note">desarrollo y consumo de APIs REST</p>
+                </article>
+
+                <article class="card tool">
+                    <div class="tool-art" aria-hidden="true">
+                        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M18 50 H82"/></svg>
+                        <span class="node" style="--x: 18; --y: 50"><i class="fab fa-git-alt"></i></span>
+                        <span class="node node-core" style="--x: 50; --y: 50"><i class="fab fa-github"></i></span>
+                        <span class="node" style="--x: 82; --y: 50"><i class="fab fa-npm"></i></span>
+                    </div>
                     <h3>Herramientas &amp; Metodologías</h3>
-                    <p>Control de versiones y trabajo colaborativo en equipos ágiles.</p>
-                    <ul class="chips">
-                        <li class="chip">Git / GitHub</li>
-                        <li class="chip">NPM</li>
-                        <li class="chip">Metodologías Ágiles (Scrum)</li>
-                    </ul>
+                    <p class="tool-list">Git / GitHub, NPM y metodologías ágiles (Scrum).</p>
+                    <p class="tool-note">trabajo en equipo, code reviews y buenas prácticas</p>
                 </article>
             </div>
         </div>
     </section>
 
+    <!-- Bandas cruzadas de herramientas: decorativas, se desplazan con el scroll -->
+    <div class="ribbons" aria-hidden="true">
+        <div class="band band-back">
+            <ul class="band-track">
+                <li><i class="fab fa-git-alt"></i> Git</li>
+                <li><i class="fab fa-sass"></i> Sass</li>
+                <li><i class="fas fa-database"></i> SQL Server</li>
+                <li><i class="fab fa-js"></i> JavaScript</li>
+                <li>RxJS</li>
+                <li><i class="fab fa-html5"></i> HTML5</li>
+                <li><i class="fab fa-npm"></i></li>
+                <li>TypeScript</li>
+                <li><i class="fab fa-git-alt"></i> Git</li>
+                <li><i class="fab fa-sass"></i> Sass</li>
+                <li><i class="fas fa-database"></i> SQL Server</li>
+                <li><i class="fab fa-js"></i> JavaScript</li>
+                <li>RxJS</li>
+                <li><i class="fab fa-html5"></i> HTML5</li>
+                <li><i class="fab fa-npm"></i></li>
+                <li>TypeScript</li>
+            </ul>
+        </div>
+        <div class="band band-front">
+            <ul class="band-track">
+                <li><i class="fab fa-angular"></i> Angular</li>
+                <li><i class="fab fa-microsoft"></i> .NET</li>
+                <li><i class="fab fa-github"></i> GitHub</li>
+                <li>Entity Framework</li>
+                <li>TypeScript</li>
+                <li><i class="fas fa-database"></i> SQL Server</li>
+                <li><i class="fab fa-angular"></i> Angular</li>
+                <li><i class="fab fa-microsoft"></i> .NET</li>
+                <li><i class="fab fa-github"></i> GitHub</li>
+                <li>Entity Framework</li>
+                <li>TypeScript</li>
+                <li><i class="fas fa-database"></i> SQL Server</li>
+            </ul>
+        </div>
+    </div>
+
     <!-- 03 · Experiencia -->
     <section class="section" id="experiencia">
         <div class="container">
             <header class="sec-head reveal">
-                <span class="sec-num">03 — Experiencia</span>
                 <h2>Trayectoria<span class="accent">.</span></h2>
             </header>
             <article class="job reveal">
@@ -1844,34 +2080,30 @@
     <section class="section" id="educacion">
         <div class="container">
             <header class="sec-head reveal">
-                <span class="sec-num">04 — Educación</span>
                 <h2>Formación<span class="accent">.</span></h2>
                 <p>Base técnica sólida y aprendizaje continuo.</p>
             </header>
             <div class="edu-grid reveal">
                 <article class="card edu-card">
-                    <span class="icon-tile"><i class="fas fa-graduation-cap"></i></span>
-                    <h3>Tecnólogo en Desarrollo de Software</h3>
+                    <h3 class="card-title"><i aria-hidden="true" class="fas fa-graduation-cap"></i> Tecnólogo en Desarrollo de Software</h3>
                     <p class="muted">Campuslands</p>
                     <span class="edu-year">— 2023</span>
                 </article>
                 <article class="card edu-card">
-                    <span class="icon-tile"><i class="fas fa-certificate"></i></span>
-                    <h3>Formación continua</h3>
+                    <h3 class="card-title"><i aria-hidden="true" class="fas fa-certificate"></i> Formación continua</h3>
                     <ul class="item-list">
-                        <li><i class="fas fa-sitemap"></i> Arquitectura frontend y buenas prácticas</li>
-                        <li><i class="fab fa-angular"></i> Angular avanzado</li>
-                        <li><i class="fas fa-robot"></i> Curso en agentes IA</li>
-                        <li><i class="fab fa-python"></i> Curso en Python</li>
+                        <li><i aria-hidden="true" class="fas fa-sitemap"></i> Arquitectura frontend y buenas prácticas</li>
+                        <li><i aria-hidden="true" class="fab fa-angular"></i> Angular avanzado</li>
+                        <li><i aria-hidden="true" class="fas fa-robot"></i> Curso en agentes IA</li>
+                        <li><i aria-hidden="true" class="fab fa-python"></i> Curso en Python</li>
                     </ul>
                 </article>
                 <article class="card edu-card">
-                    <span class="icon-tile"><i class="fas fa-language"></i></span>
-                    <h3>Idiomas y disponibilidad</h3>
+                    <h3 class="card-title"><i aria-hidden="true" class="fas fa-language"></i> Idiomas y disponibilidad</h3>
                     <ul class="item-list">
-                        <li><i class="fas fa-comment"></i><span>Español<small>Nativo</small></span></li>
-                        <li><i class="fas fa-book-open"></i><span>Inglés<small>Técnico (lectura / escritura)</small></span></li>
-                        <li><i class="fas fa-calendar-check"></i><span>Disponibilidad<small>Inmediata</small></span></li>
+                        <li><i aria-hidden="true" class="fas fa-comment"></i><span>Español<small>Nativo</small></span></li>
+                        <li><i aria-hidden="true" class="fas fa-book-open"></i><span>Inglés<small>Técnico (lectura / escritura)</small></span></li>
+                        <li><i aria-hidden="true" class="fas fa-calendar-check"></i><span>Disponibilidad<small>Inmediata</small></span></li>
                     </ul>
                 </article>
             </div>
@@ -1881,17 +2113,16 @@
     <!-- 05 · Contacto -->
     <section class="section contact" id="contacto">
         <div class="container">
-            <span class="sec-num reveal">05 — Contacto</span>
             <div class="contact-inner reveal">
                 <span class="script note-4" aria-hidden="true">¡escríbeme! ↓</span>
                 <h2>¿Construimos<br>algo juntos<span class="accent">?</span></h2>
                 <p>Estoy disponible para nuevas oportunidades. Escríbeme y conversemos sobre tu proyecto o equipo.</p>
-                <a class="big-mail" href="mailto:lozadagomezj@gmail.com">lozadagomezj@gmail.com <i class="fas fa-arrow-right"></i></a>
+                <a class="big-mail" href="mailto:lozadagomezj@gmail.com">lozadagomezj@gmail.com <i aria-hidden="true" class="fas fa-arrow-right"></i></a>
                 <ul class="contact-list">
-                    <li><a href="https://linkedin.com/in/jualoz" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i> linkedin.com/in/jualoz</a></li>
-                    <li><a href="https://github.com/Jualoz" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> github.com/Jualoz</a></li>
-                    <li><a href="tel:+573152547066"><i class="fas fa-phone"></i> (+57) 315 254 7066</a></li>
-                    <li><span><i class="fas fa-location-dot"></i> Bucaramanga, Colombia</span></li>
+                    <li><a href="https://linkedin.com/in/jualoz" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fab fa-linkedin-in"></i> linkedin.com/in/jualoz</a></li>
+                    <li><a href="https://github.com/Jualoz" target="_blank" rel="noopener noreferrer"><i aria-hidden="true" class="fab fa-github"></i> github.com/Jualoz</a></li>
+                    <li><a href="tel:+573152547066"><i aria-hidden="true" class="fas fa-phone"></i> (+57) 315 254 7066</a></li>
+                    <li><span><i aria-hidden="true" class="fas fa-location-dot"></i> Bucaramanga, Colombia</span></li>
                 </ul>
             </div>
         </div>
@@ -1901,7 +2132,7 @@
 <footer class="footer">
     <div class="container footer-inner">
         <span>© <span id="year">2026</span> Juan Pablo Lozada Gómez</span>
-        <a href="#top"><i class="fas fa-arrow-up"></i> Volver arriba</a>
+        <a href="#top"><i aria-hidden="true" class="fas fa-arrow-up"></i> Volver arriba</a>
     </div>
 </footer>
 
